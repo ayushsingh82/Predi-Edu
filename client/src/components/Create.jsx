@@ -11,21 +11,21 @@ import { parseGwei } from 'viem'
 import { createPublicClient , http } from 'viem'
 
 
-const flowTestnet = {
-  id: 545,
-  name: 'Flow Testnet',
-  network: 'flow-testnet',
+const eduChainTestnet = {
+  id: 656476,
+  name: 'Educhain Testnet',
+  network: 'edu-chain-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'FLOW',
-    symbol: 'FLOW',
+    name: 'EDU',
+    symbol: 'EDU',
   },
   rpcUrls: {
     default: {
-      http: ['https://testnet.evm.nodes.onflow.org']
+      http: ['https://open-campus-codex-sepolia.drpc.org']
     },
     public: {
-      http: ['https://testnet.evm.nodes.onflow.org']
+      http: ['https://open-campus-codex-sepolia.drpc.org']
     }
   }
 }
@@ -59,13 +59,13 @@ function Create() {
 
       // Create public client
       const publicClient = createPublicClient({
-        chain: flowTestnet,
+        chain: eduChainTestnet,
         transport: http()
       })
 
       // Create wallet client
       const walletClient = createWalletClient({
-        chain: flowTestnet,
+        chain: eduChainTestnet,
         transport: custom(window.ethereum)
       })
 
@@ -73,22 +73,22 @@ function Create() {
       try {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x221' }]
+          params: [{ chainId: '0xa045c' }]
         })
       } catch (switchError) {
         if (switchError.code === 4902) {
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [{
-              chainId: '0x221',
-              chainName: 'Flow Testnet',
+              chainId: '0xa045c',
+              chainName: 'Educhain Testnet',
               nativeCurrency: {
-                name: 'FLOW',
-                symbol: 'FLOW',
+                name: 'EDU',
+                symbol: 'EDU',
                 decimals: 18
               },
-              rpcUrls: ['https://testnet.evm.onflow.org'],
-              blockExplorerUrls: ['https://testnet.flowscan.org']
+              rpcUrls: ['https://open-campus-codex-sepolia.drpc.org'],
+              blockExplorerUrls: ['https://edu-chain-testnet.blockscout.com/.']
             }]
           })
         }
@@ -96,8 +96,8 @@ function Create() {
 
       // Get current chain ID to verify
       const chainId = await walletClient.getChainId()
-      if (chainId !== 545) {
-        throw new Error('Please switch to Flow Testnet')
+      if (chainId !== 656476) {
+          throw new Error('Please switch to Educhain Testnet')
       }
 
       // Prepare the contract write

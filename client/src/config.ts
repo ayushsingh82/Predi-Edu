@@ -1,41 +1,40 @@
 import { createPublicClient, createWalletClient , http, custom } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
-import { flowTestnet } from 'viem/chains'
 
 // Custom Flow Testnet configuration
-export const flowTestnetTry = {
-  id: 545,
-  name: 'Flow Testnet',
-  network: 'flow-testnet',
+export const eduChainTestnet = {
+  id: 656476,
+  name: 'Educhain Testnet',
+  network: 'edu-chain-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Flow',
-    symbol: 'FLOW',
+    name: 'Educhain',
+    symbol: 'EDU',
   },
   rpcUrls: {
     default: {
-      http: ['https://testnet.evm.nodes.onflow.org'],
+      http: ['https://open-campus-codex-sepolia.drpc.org'],
       
     },
     public: {
-      http: ['https://testnet.evm.nodes.onflow.org'],
+      http: ['https://open-campus-codex-sepolia.drpc.org'],
     },
   },
   blockExplorers: {
-    default: { name: 'FlowScan', url: 'https://testnet.flowscan.org' },
+    default: { name: 'EduchainScan', url: 'https://edu-chain-testnet.blockscout.com/.' },
   },
   testnet: true,
 }
 
 // Public client
 export const publicClient = createPublicClient({
-  chain: flowTestnet,
+  chain: eduChainTestnet,
   transport: http()
 })
 
 // Wallet client
 export const walletClient = createWalletClient({
-  chain: flowTestnet,
+  chain: eduChainTestnet,
   transport: custom(window.ethereum)
 })
 
@@ -43,7 +42,7 @@ export const walletClient = createWalletClient({
 export const getWalletClient = () => {
   if (typeof window !== 'undefined' && window.ethereum) {
     return createWalletClient({
-      chain: flowTestnet,
+      chain: eduChainTestnet,
       transport: custom(window.ethereum),
       account: window.ethereum.selectedAddress
     })
@@ -53,15 +52,15 @@ export const getWalletClient = () => {
 
 // Chain configuration for wallet connection
 export const chainConfig = {
-  chainId: '0x221', // 545 in hex
-  chainName: 'Flow Testnet',
+  chainId: '0xa045c', // 545 in hex
+  chainName: ' Educhain Testnet',
   nativeCurrency: {
-    name: 'Flow',
-    symbol: 'FLOW',
+    name: 'Educhain',
+    symbol: 'EDU',
     decimals: 18
   },
-  rpcUrls: ['https://testnet.evm.nodes.onflow.org'],
-  blockExplorerUrls: ['https://testnet.flowscan.org']
+  rpcUrls: ['https://open-campus-codex-sepolia.drpc.org'],
+  blockExplorerUrls: ['https://edu-chain-testnet.blockscout.com/.']
 }
 
 // JSON-RPC Account

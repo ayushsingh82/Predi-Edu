@@ -11,7 +11,7 @@ import LiveBet from './components/LiveBet'
 import { PrivateRoute } from './components/PrivateRoute'
 import Eliza from './components/Eliza'
 import BuyBet from './components/BuyBet'
-import { flowTestnet } from 'viem/chains'
+import { eduChainTestnet } from './config'
 
 
 
@@ -23,8 +23,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       appId="cm6ifh5ql004ze7raa9cr0n3k"
       config={{
         loginMethods: ['email', 'wallet'],
-        defaultChain: flowTestnet ,
-        supportedChains: [ flowTestnet], 
+          defaultChain: eduChainTestnet ,
+        supportedChains: [ eduChainTestnet], 
         appearance: {
           theme: 'dark',
           accentColor: '#3B82F6',

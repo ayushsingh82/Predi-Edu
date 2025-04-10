@@ -19,7 +19,7 @@ export function ConnectButton() {
       })
     } catch (switchError) {
       // If chain doesn't exist, add it
-      if (switchError.code === 4902) {
+      if (switchError.code === 656476  ) {
         try {
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
