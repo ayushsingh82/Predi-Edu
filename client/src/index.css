@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(-10deg); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+.animate-float1 {
+  animation: float1 6s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 8s ease-in-out infinite;
+}
+
+.animate-float3 {
+  animation: float3 7s ease-in-out infinite;
+}
+
