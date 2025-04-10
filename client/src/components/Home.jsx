@@ -17,7 +17,7 @@ function Home() {
           </h1>
           <p className="text-xl text-black mb-12">
             <span className=" px-4 py-2 rounded-lg text-sm font-bold">
-              Prediction market on Flow powered by eliza AI <br/> and polymarket insights.
+              Prediction market on Educhain powered by eliza AI <br/> and polymarket insights.
             </span>
 
             <hr className='mt-[10px] mb-[10px] border-blue-500/30'/>
