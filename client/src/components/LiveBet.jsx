@@ -36,7 +36,7 @@ function LiveBet() {
     const fetchQuestions = async () => {
       try {
         const contractQuestions = await publicClient.readContract({
-          address: "0x5a8E771b5D0B3d2e4d218478CB7C9029d00c4e5a",
+          address: "0xf12F7584143D17169905D7954D3DEab8942a310d",
           abi: wagmiAbi,
           functionName: "getAllQuestions"
         });
